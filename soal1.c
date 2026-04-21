@@ -17,15 +17,25 @@ int main (){
     char string[10];
     gets(string);
     /*input -> a)b(c)d); output -> ab(c)d*/
+    /*input -> x(y(z)); output -> x(y(z))*/
+    /*input -> (ab)c; output -> (ab)c*/
     int length = strlen(string);
     for(int i=0; i<length; i++){
         if(string[i] == '('){
-            if(i+2<length && string[i+1]>='a' && string[i+1]<='z' && string[i+2]==')'){//cek kasus
-                i+=2; //melewati kurung yang valid
+            int j=1+1;
+            int valid=0;
+            while(j<length && string[j]!=')'){
+                if(string[j]>='a' && string[j]<='z'){
+                    valid = 1; //ada huruf didalam kurung
+                }
+                j++;
+            }
+            if(j<length && string[j]==')' && valid){ //cek kasus
+                i=j; //melewati kurung yang valid
             }
             else{
-                for(int j=i; string[j]!='\0'; j++){
-                    string[j]=string[j+1];//shift kiri
+                for(int k=i; string[k]!='\0'; k++){
+                    string[k]=string[k+1];//shift kiri
                 }
                 i--;//indeks sblmnya
             }
