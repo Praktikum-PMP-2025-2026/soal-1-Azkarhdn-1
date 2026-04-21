@@ -15,7 +15,7 @@
 #include <stdio.h>
 int main (){
     char string[10];
-    scanf("%s", string);
+    gets(string);
     /*input -> a)b(c)d); output -> ab(c)d*/
     int length = strlen(string);
     for(int i=0; i<length; i++){
