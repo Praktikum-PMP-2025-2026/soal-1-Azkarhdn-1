@@ -36,12 +36,6 @@ int main (){
             }
             i--;//indeks sblmnya
         }
-        else if(string[i]>='a' && string[i]<='z'){
-            for(int j=i; string[j]!='\0';j++){
-                string[j]= string[j+1];//shift left
-            }
-            i--;//indeks sblmnya
-        }
     }
     printf("%s", string);
     return 0;
